@@ -1,24 +1,27 @@
 {% extends "tpl.html" %}
 
 {% block content %}
-
+<div class="container mt-4">
+    <h1 class="display-4">Class List</h1>
+    <p class="lead">Here is a list of all available classes.</p>
+    
     {% if class_list %}
-        <ul>
+        <div class="list-group mb-4">
         {% for class_data in class_list %}
-            <li>
-                <a href="/attendance/class{{ class_data.id }}/">
-                    Class: {{ class_data.id }}
-                    on {{ class_data.class_date }}
-                </a>
-            </li>
+            <a href="/attendance/class{{ class_data.id }}/" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Class: {{ class_data.id }}</h5>
+                    <small>{{ class_data.class_date }}</small>
+                </div>
+            </a>
         {% endfor %}
-        </ul>
+        </div>
     {% else %}
-        <p>No classes available.</p>
+        <p class="alert alert-warning">No classes available.</p>
     {% endif %}
-
+    
     <div>
         <a href="{% url 'attendance:create' %}" class="btn btn-primary">Create</a>
     </div>
-
+</div>
 {% endblock %}

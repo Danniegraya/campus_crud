@@ -1,9 +1,45 @@
 {% extends "tpl.html" %}
 
 {% block content %}
-    
-    <h1> Welcome to the UP Campus site  </h1>
-    <p> Select an app from the menu in the header. </p>
-    <img src="https://www.up.edu.mx/wp-content/uploads/2022/01/03-2.jpg" alt="Campus Image" style="width:100%; height:auto;">
-    
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4">Welcome to the UP Campus Site</h1>
+            <p class="lead">Explore our campus life, events, and resources.</p>
+            <a href="https://www.up.edu.mx/campus-guadalajara/" class="btn btn-primary btn-lg">Discover More</a>
+        </div>
+    </div>
+</div>
+
+<div id="features" class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://www.up.edu.mx/wp-content/uploads/2023/08/panamericana-recibe-a-42-alumnos-de-intercambio-grid.jpg" class="card-img-top" alt="Student Life">
+                <div class="card-body">
+                    <h5 class="card-title">Student Life</h5>
+                    <p class="card-text">Learn about student clubs, organizations, and activities.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://mkt.up.edu.mx/hs-fs/hubfs/gdl/admisiones/2023/admisiones-UP-campus-guadalajara-img-cta1.jpg?width=691&height=440&name=admisiones-UP-campus-guadalajara-img-cta1.jpg" class="card-img-top" alt="Academic Excellence">
+                <div class="card-body">
+                    <h5 class="card-title">Academic Excellence</h5>
+                    <p class="card-text">Discover our academic programs, faculty, and research opportunities.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://www.up.edu.mx/wp-content/uploads/2022/03/img_gdl_instalaciones_gym.jpg" class="card-img-top" alt="Campus Facilities">
+                <div class="card-body">
+                    <h5 class="card-title">Campus Facilities</h5>
+                    <p class="card-text">Explore our state-of-the-art facilities, libraries, and sports amenities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

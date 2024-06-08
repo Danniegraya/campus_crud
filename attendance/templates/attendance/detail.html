@@ -1,33 +1,48 @@
 {% extends "tpl.html" %}
 
 {% block content %}
-
-    <h1>
-    Class {{ class_data.id }}
-    </h1>
-    
-    <p>
-        You are looking at class <strong>{{ class_data.id }}</strong>.
-        The class was held on date {{ class_data.class_date }}.
+<div class="container mt-4">
+    <h1 class="display-4">Class Details</h1>
+    <p class="lead">
+        You are looking at class <strong>{{ class_data.id }}</strong>. The class was held on <strong>{{ class_data.class_date }}</strong>.
     </p>
     
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>A.K.A.</th>
-            <th>Assistance</th>
-            <th>{{ class_data.question_of_the_day }}</th>
-        </tr>
-        {% for student in students %}
-        <tr>
-            <td>{{ student.id }}</td>
-            <td>{{ student.full_name }}</td>
-            <td>{{ student.aka }}</td>
-            <td>{{ student.status }}</td>
-            <td>{{ student.answer_of_the_day }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
+    <div class="card my-4">
+        <div class="card-header">
+            <h2>Class {{ class_data.id }}</h2>
+        </div>
+        <div class="card-body">
+            <p>
+                <strong>Class ID:</strong> {{ class_data.id }}<br>
+                <strong>Date:</strong> {{ class_data.class_date }}<br>
+                <strong>Question of the Day:</strong> {{ class_data.question_of_the_day }}
+            </p>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>A.K.A.</th>
+                    <th>Assistance</th>
+                    <th>{{ class_data.question_of_the_day }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.full_name }}</td>
+                    <td>{{ student.aka }}</td>
+                    <td>{{ student.status }}</td>
+                    <td>{{ student.answer_of_the_day }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

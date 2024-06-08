@@ -1,21 +1,24 @@
 {% extends "tpl.html" %}
 
 {% block content %}
+<div class="container mt-4">
+    <h1 class="display-4">Quiz {{ quiz_id }} Response</h1>
+    <p class="lead">Response for student {{ student_id }}</p>
 
-    quiz {{ quiz_id }} response for student {{ student_id }}
-
-    <ul>
+    <ul class="list-group mb-4">
         {% for question in questions %}
-        <li>
+        <li class="list-group-item">
             <strong>{{ question.question }}</strong>
             <br>
-            {% if question.response.answer_text %}
-                <em>{{ question.response.answer_text }}</em>
-            {% else %}
-                {{ question.response.answer }} ({{ question.response.answer_id }})
-            {% endif %}
+            <p class="mt-2">
+                {% if question.response.answer_text %}
+                    <em>{{ question.response.answer_text }}</em>
+                {% else %}
+                    {{ question.response.answer }} <small class="text-muted">({{ question.response.answer_id }})</small>
+                {% endif %}
+            </p>
         </li>
         {% endfor %}
     </ul>
-
+</div>
 {% endblock %}

@@ -1,37 +1,34 @@
 {% extends "tpl.html" %}
 
 {% block content %}
-
-    This is the index of the "quizzes" app. Here is a list of all available quizzes.
+<div class="container mt-4">
+    <h1 class="display-4">Quizzes Index</h1>
+    <p class="lead">Here is a list of all available quizzes.</p>
 
     {% if quizz_list %}
-        <ul>
+        <div class="list-group">
         {% for quiz in quizz_list %}
-            <li>
-                Quiz: {{ quiz.id }}
-                Created At: {{ quiz.created_at }}
-                Title: {{ quiz.title }}
-                <br>
-                <em>{{ quiz.description }}</em>
-                <ul>
+            <div class="list-group-item mb-3">
+                <h5 class="mb-1">Quiz: {{ quiz.id }} - {{ quiz.title }}</h5>
+                <small class="text-muted">Created At: {{ quiz.created_at }}</small>
+                <p class="mb-1"><em>{{ quiz.description }}</em></p>
+                <ul class="list-group list-group-flush">
                     {% for response in quiz.responses %}
-                    <li>
-                        <a href="/quizzes/{{ quiz.id }}/{{ response.student_id }}">
-                            {{ response.student_id }}
+                    <li class="list-group-item">
+                        <a href="/quizzes/{{ quiz.id }}/{{ response.student_id }}" class="text-decoration-none">
+                            {{ response.full_name }} ({{ response.student_id }})
                         </a>
-                        {{ response.full_name }}
                     </li>
                     {% endfor %}
                 </ul>
-
-                <a href="{% url 'quizzes:create' quiz_id=quiz.id %}" class="btn btn-primary">
+                <a href="{% url 'quizzes:create' quiz_id=quiz.id %}" class="btn btn-primary mt-2">
                     Attempt now
                 </a>
-            </li>
+            </div>
         {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <p>No quizzes available.</p>
     {% endif %}
-
+</div>
 {% endblock %}
